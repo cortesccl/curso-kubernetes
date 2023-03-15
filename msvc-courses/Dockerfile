@@ -23,7 +23,7 @@ RUN mkdir ./logs
 
 ARG TARGET_FOLDER=/app/$MSVC_NAME/target
 COPY --from=builder $TARGET_FOLDER/msvc-courses-0.0.1-SNAPSHOT.jar .
-ARG PORT_APP=8001
+ARG PORT_APP=8002
 ENV PORT $PORT_APP
 EXPOSE $PORT
 
