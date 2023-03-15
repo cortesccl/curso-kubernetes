@@ -30,10 +30,10 @@ services:
 
   msvc-users:
     container_name: msvc-users
-#    image: msvc-users:v1
-    build:
-      context: ./
-      dockerfile: ./msvc-users/Dockerfile
+    image: saraccortes/msvc-users:v1
+#    build:
+#      context: ./
+#      dockerfile: ./msvc-users/Dockerfile
     ports:
       - "8001:8001"
     env_file: ./msvc-users/.env
@@ -45,10 +45,10 @@ services:
 
   msvc-courses:
     container_name: msvc-courses
-#    image: msvc-courses:v1
-    build:
-      context: ./
-      dockerfile: ./msvc-courses/Dockerfile
+    image: saraccortes/msvc-courses:v1
+#    build:
+#      context: ./
+#      dockerfile: ./msvc-courses/Dockerfile
     ports:
       - "8002:8002"
     env_file:
