@@ -27,4 +27,5 @@ ARG PORT_APP=8002
 ENV PORT $PORT_APP
 EXPOSE $PORT
 
+#CMD sleep 20 && java -jar msvc-courses-0.0.1-SNAPSHOT.jar
 CMD ["java", "-jar", "msvc-courses-0.0.1-SNAPSHOT.jar"]

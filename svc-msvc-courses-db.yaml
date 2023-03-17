@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  #  creationTimestamp: "2023-03-15T12:19:57Z"
+  #  labels:
+  #    app: msvc-courses-db
+  name: msvc-courses-db
+#  namespace: default
+#  resourceVersion: "1217"
+#  uid: 8aaf3237-6532-4005-84fe-5e1bb405cdfb
+spec:
+  #  clusterIP: 10.106.181.46
+  #  clusterIPs:
+  #  - 10.106.181.46
+  #  internalTrafficPolicy: Cluster
+  #  ipFamilies:
+  #  - IPv4
+  #  ipFamilyPolicy: SingleStack
+  ports:
+    - port: 3306
+      protocol: TCP
+      targetPort: 3306
+  selector:
+    app: msvc-courses-db
+  #  sessionAffinity: None
+  type: ClusterIP
+#status:
+#  loadBalancer: {}

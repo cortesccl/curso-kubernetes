@@ -30,7 +30,7 @@ services:
 
   msvc-users:
     container_name: msvc-users
-    image: saraccortes/msvc-users:v1
+    image: saraccortes/msvc-users:latest
 #    build:
 #      context: ./
 #      dockerfile: ./msvc-users/Dockerfile
@@ -45,7 +45,7 @@ services:
 
   msvc-courses:
     container_name: msvc-courses
-    image: saraccortes/msvc-courses:v1
+    image: saraccortes/msvc-courses:latest
 #    build:
 #      context: ./
 #      dockerfile: ./msvc-courses/Dockerfile
