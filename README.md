@@ -9,6 +9,11 @@ Creamos imagen con  el código modificado
 Creamos etiqueta para subirlo a hithub docker
 
 ## Comandos Kubectl
+### Kubernetes con Administrador
+#### minikube delete
+#### minikube start --driver=hyperv
+#### minikube status
+
 ### kubectl create deployment msvc-users-db --image=mysql:8 --port=3306
 Crea objeto deployment para crear una imagen a partir de una imagen previa y se le asigna un puerto
 La forma imperativa  no permite pasar variables de ambiente al contenedor.
@@ -89,6 +94,9 @@ Creamos el servicio de msvc-users
 
 ### kubectl apply -f .\deployment-msvc-users.yaml
 Aplicar deployment msvc-users
+
+### kubectl get sc
+Obtiene  clase de almacenamiento
 
 
 
