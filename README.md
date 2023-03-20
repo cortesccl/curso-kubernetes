@@ -98,5 +98,7 @@ Aplicar deployment msvc-users
 ### kubectl get sc
 Obtiene  clase de almacenamiento
 
+### kubectl create clusterrolebinding admin --clusterrole=cluster-admin --serviceaccount=default:default
+Permite algo 
 
-
+### 
