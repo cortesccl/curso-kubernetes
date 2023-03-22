@@ -5,12 +5,12 @@ spring:
         - id: msvc-courses
           uri: lb://msvc-courses
           predicates:
-            - Path=/api/courses/**
+            - Path=/api/msvc-courses/**
           filters:
             - StripPrefix=2
         - id: msvc-users
           uri: lb://msvc-users
           predicates:
-            - Path=/api/users/**
+            - Path=/api/msvc-users/**
           filters:
             - StripPrefix=2

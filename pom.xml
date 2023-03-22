@@ -20,6 +20,7 @@
         <module>msvc-users</module>
         <module>msvc-courses</module>
         <module>msvc-gateway</module>
+        <module>msvc-oauth</module>
     </modules>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

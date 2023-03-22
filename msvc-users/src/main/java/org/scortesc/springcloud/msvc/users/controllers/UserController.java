@@ -126,6 +126,13 @@ public class UserController {
     public ResponseEntity<?> findByIds (@RequestParam List<Long> ids) {
         return ResponseEntity.ok(userService.findAllById(ids));
     }
+
+    @GetMapping("/authorized")
+    public Map<String, Object> authorized(@RequestParam(name = "code") String code) {
+        return Collections.singletonMap("code", code);
+    }
+
+
     private static ResponseEntity<Map<String, String>> validate (BindingResult bindingResult) {
         Map<String, String> errors = new HashMap<>();
         bindingResult.getFieldErrors().forEach(fieldError -> {

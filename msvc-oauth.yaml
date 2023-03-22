@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: msvc-oauth
+  labels:
+    app: msvc-oauth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: msvc-oauth
+  template:
+    metadata:
+      labels:
+        role: msvc-oauth
+    spec:
+      containers:
+        - name: msvc-oauth
+          image: saraccortes/msvc-oauth:latest
+          ports:
+            - containerPort: 9000
+          env:
+            - name: LB_USERS_URI
+              valueFrom:
+                configMapKeyRef:
+                  name: msvc-users
+                  key: lb_users_uri
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: msvc-oauth
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 9000
+      targetPort: 9000
+  selector:
+    role: msvc-oauth
+
+

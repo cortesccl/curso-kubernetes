@@ -101,4 +101,4 @@ Obtiene  clase de almacenamiento
 ### kubectl create clusterrolebinding admin --clusterrole=cluster-admin --serviceaccount=default:default
 Permite algo 
 
-### 
+### kubectl port-forward service/mysql 3306:3306
