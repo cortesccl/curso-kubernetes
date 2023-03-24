@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -34,8 +35,8 @@ public class CourseController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findById (@PathVariable Long id) {
-        Optional<Course> courseOptional = courseService.findCourseByIdWithUsers(id);//courseService.findCourseById(id);
+    public ResponseEntity<?> findById (@PathVariable Long id, @RequestHeader(value="Authorization", required = true) String token) {
+        Optional<Course> courseOptional = courseService.findCourseByIdWithUsers(id, token);//courseService.findCourseById(id);
         if (courseOptional.isPresent()) {
             return ResponseEntity.ok(courseOptional.get());
         }

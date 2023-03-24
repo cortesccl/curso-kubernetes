@@ -8,7 +8,7 @@ spring:
         registration:
           msvc-users-client:
             provider: spring
-            client-id: msvc-users-client
+            client-id: msvc-users
             client-secret: 12345
             authorization-grant-type: authorization_code
             redirect-uri: ${LB_USERS_URI:http://127.0.0.1:8001}/authorized

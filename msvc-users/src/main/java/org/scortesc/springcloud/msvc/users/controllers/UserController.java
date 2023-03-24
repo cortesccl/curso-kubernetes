@@ -8,6 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +28,9 @@ import java.util.Optional;
 
 @RestController
 public class UserController {
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     private IUserService userService;
@@ -81,6 +85,7 @@ public class UserController {
                     .body(Collections
                             .singletonMap("message", "Ya existe un usuario con el email proporcionado!!!"));
         }
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.saveUser(user));
     }
 
@@ -106,7 +111,8 @@ public class UserController {
             }
             userDb.setName(user.getName());
             userDb.setEmail(user.getEmail());
-            userDb.setPassword(user.getPassword());
+            userDb.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+
             return ResponseEntity.status(HttpStatus.CREATED).body(userService.saveUser(userDb));
         }
         return ResponseEntity.notFound().build();
@@ -130,6 +136,15 @@ public class UserController {
     @GetMapping("/authorized")
     public Map<String, Object> authorized(@RequestParam(name = "code") String code) {
         return Collections.singletonMap("code", code);
+    }
+
+    @GetMapping("/login")
+    public ResponseEntity<?> loginByEmail(@RequestParam(name = "email") String email) {
+        Optional<User> userOptional = userService.findUserByEmail(email);
+        if (userOptional.isPresent()) {
+            return ResponseEntity.ok(userOptional.get());
+        }
+        return ResponseEntity.notFound().build();
     }
 
 

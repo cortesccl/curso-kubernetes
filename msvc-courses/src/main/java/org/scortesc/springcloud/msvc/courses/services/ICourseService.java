@@ -10,7 +10,7 @@ public interface ICourseService {
     List<Course> findAll ();
 
     Optional<Course> findCourseById (Long id);
-    Optional<Course> findCourseByIdWithUsers (Long id);
+    Optional<Course> findCourseByIdWithUsers (Long id, String token);
 
     Optional<Course> findCourseByName (String name);
 

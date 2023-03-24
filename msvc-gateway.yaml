@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: msvc-gateway
   labels:
-    app: msvc-gateway
+    role: msvc-gateway
 spec:
   replicas: 1
   selector:

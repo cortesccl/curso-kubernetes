@@ -76,6 +76,9 @@ Creamos  el deployment o imagen y exponemos el puerto con tipo LoadBalancer
 
 ### minikube service msvc-users --url
 Obtiene la ruta pública
+Otra forma, si no se tienen permisos de administrador es:
+Para obtener el puerto: kubectl get svc
+Para obtener la url: kubectl describe pod xxxx y fijarse en el atributo Node: 
 
 ### kubectl set image deployment msvc-users msvc-users=saraccortes/msvc-users:v2
 Cambiar imagen del contenedor de forma imperativa
@@ -102,3 +105,4 @@ Obtiene  clase de almacenamiento
 Permite algo 
 
 ### kubectl port-forward service/mysql 3306:3306
+Para poder conectarnos con la base de datos

@@ -3,8 +3,10 @@ kind: ConfigMap
 metadata:
   name: msvc-users
 data:
-  lb_auth_issuer_uri: http://172.17.151.86:31847
-  lb_users_uri: http://172.17.151.86:32246
+#  lb_auth_issuer_uri: http://msvc-oauth:9000
+#  lb_users_uri: http://msvc-users:8001
+  lb_auth_issuer_uri: http://172.22.250.171:31094
+  lb_users_uri: http://172.22.250.171:31510
 #  lb_auth_issuer_uri: http://127.0.0.1:9000
 #  lb_users_uri: http://127.0.0.1:8001
   port: "8001"
