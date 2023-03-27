@@ -36,7 +36,14 @@ services:
 #      dockerfile: ./msvc-users/Dockerfile
     ports:
       - "8001:8001"
-    env_file: ./msvc-users/.env
+#    env_file: ./msvc-users/.env
+    environment:
+      PORT: 8001
+      DB_HOST: msvc-users-db:3306
+      DB_DATABASE: msvc_users
+      DB_USER: root
+      DB_PASSWORD: sasa
+      COURSES_URL: msvc-courses:8002
     depends_on:
       - msvc-users-db
     restart: always
@@ -51,8 +58,15 @@ services:
 #      dockerfile: ./msvc-courses/Dockerfile
     ports:
       - "8002:8002"
-    env_file:
-      - ./msvc-courses/.env
+#    env_file:
+#      - ./msvc-courses/.env
+    environment:
+      PORT: 8002
+      DB_HOST: msvc-courses-db:3306
+      DB_DATABASE: msvc_courses
+      DB_USER: root
+      DB_PASSWORD: sasa
+      USERS_URL: msvc-users:8001
     networks:
       - spring
     depends_on:
